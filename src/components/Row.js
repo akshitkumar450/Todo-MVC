@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Row({ todo, setActiveTodo, deleteTodo, todos, setTodos }) {
+function Row({ todo, setActiveTodo, deleteTodo, todos, setTodos, addTodos }) {
   const [editable, setEditable] = useState(false);
   const [edit, setEdit] = useState("");
   const [todoItem, setTodoItem] = useState(todo);
@@ -15,7 +15,7 @@ function Row({ todo, setActiveTodo, deleteTodo, todos, setTodos }) {
       setEditable(false);
       let temp;
       temp = todos.filter((todo) => todo.id !== id);
-      setTodos([...temp]);
+      addTodos([...temp]);
       return;
     }
     todos.forEach((todo) => {
@@ -23,7 +23,7 @@ function Row({ todo, setActiveTodo, deleteTodo, todos, setTodos }) {
         todo.todo = edit.trim();
       }
     });
-    setTodos(todos);
+    addTodos(todos);
     setEditable(false);
   };
 

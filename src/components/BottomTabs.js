@@ -1,7 +1,7 @@
 import React from "react";
 import Tab from "./Tab";
 
-function BottomTabs({ todos, activeTab, setActiveTab, setTodos }) {
+function BottomTabs({ todos, activeTab, addTodos, selectActive }) {
   let items = 0;
   todos.forEach((todo) => todo.active === true && items++);
 
@@ -9,7 +9,7 @@ function BottomTabs({ todos, activeTab, setActiveTab, setTodos }) {
     let clearedTodos;
     clearedTodos = todos.filter((todo) => todo.active !== true);
     items = 0;
-    setTodos([...clearedTodos]);
+    addTodos([...clearedTodos]);
   };
 
   let total = 0;
@@ -22,7 +22,7 @@ function BottomTabs({ todos, activeTab, setActiveTab, setTodos }) {
           key={idx}
           tab={tab}
           activeTab={activeTab}
-          setActiveTab={setActiveTab}
+          selectActive={selectActive}
         />
       ))}
       {items > 0 && <p onClick={() => clear()}>clear completed</p>}

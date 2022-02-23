@@ -1,6 +1,6 @@
 import React from "react";
 
-function Form({ addTodo, todo, setTodo, checkAllTodos }) {
+function Form({ addTodo, todo, checkAllTodos, handleChangeTodo }) {
   return (
     <form onSubmit={addTodo} className="formContainer">
       <p
@@ -15,7 +15,7 @@ function Form({ addTodo, todo, setTodo, checkAllTodos }) {
         value={todo}
         className="formInput"
         placeholder="What need to be done"
-        onChange={(e) => setTodo(e.target.value)}
+        onChange={(e) => handleChangeTodo(e.target.value)}
       />
       <button
         type="submit"

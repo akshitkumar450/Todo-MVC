@@ -11,12 +11,32 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [checkedItems, setCheckedItems] = useState(false);
 
+  // callback for setting the state
+  const handleChangeTodo = (todo) => {
+    setTodo(todo);
+  };
+  const addTodos = (newTodos) => {
+    setTodos(newTodos);
+  };
+  const selectActive = (selectedTab) => {
+    setActiveTab(selectedTab);
+  };
+
+  // const changeTodo(changeParam, value) {
+  //   if(changeParam==='todo') {
+  //     setTodo(value)
+  //   } else if(changeParam==='newtodo') {
+  //     setTodos(value);
+  //   }
+  // }
+
+  // utils function
   const add = (e) => {
-    addTodo(e, todo, setTodos, todos, setTodo);
+    addTodo(e, todo, addTodos, todos, handleChangeTodo);
   };
 
   const deleteTodos = (id) => {
-    deleteTodo(id, todos, setTodos);
+    deleteTodo(id, todos, addTodos);
   };
 
   const setActiveTodo = (id) => {
@@ -24,7 +44,7 @@ function App() {
   };
 
   const checkAllTodos = () => {
-    checkAll(checkedItems, setCheckedItems, todos, setTodos);
+    checkAll(checkedItems, setCheckedItems, todos, addTodos);
   };
 
   return (
@@ -34,23 +54,23 @@ function App() {
         <Form
           addTodo={add}
           todo={todo}
-          setTodo={setTodo}
+          handleChangeTodo={handleChangeTodo}
           checkAllTodos={checkAllTodos}
         />
 
         <Todos
           activeTab={activeTab}
           todos={todos}
-          setTodos={setTodos}
-          setActiveTodo={setActiveTodo}
           deleteTodos={deleteTodos}
+          setActiveTodo={setActiveTodo}
+          addTodos={addTodos}
         />
 
         <BottomTabs
           todos={todos}
           activeTab={activeTab}
-          setTodos={setTodos}
-          setActiveTab={setActiveTab}
+          selectActive={selectActive}
+          addTodos={addTodos}
         />
       </div>
     </>

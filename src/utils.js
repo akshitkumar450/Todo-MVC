@@ -1,9 +1,9 @@
 import { v4 as uuidv4 } from "uuid";
 
-export const addTodo = (e, todo, setTodos, todos, setTodo) => {
+export const addTodo = (e, todo, addTodos, todos, handleChangeTodo) => {
   e.preventDefault();
   if (todo.trim().length === 0) return;
-  setTodos([
+  addTodos([
     ...todos,
     {
       id: uuidv4(),
@@ -11,13 +11,13 @@ export const addTodo = (e, todo, setTodos, todos, setTodo) => {
       active: false,
     },
   ]);
-  setTodo("");
+  handleChangeTodo("");
 };
 
-export const deleteTodo = (id, todos, setTodos) => {
+export const deleteTodo = (id, todos, addTodos) => {
   let temp;
   temp = todos.filter((todo) => todo.id !== id);
-  setTodos(temp);
+  addTodos(temp);
 };
 
 export const setActive = (id, todos, setCompleted, completed, setTodos) => {
@@ -32,20 +32,20 @@ export const setActive = (id, todos, setCompleted, completed, setTodos) => {
   setTodos(activeTodos);
 };
 
-export const checkAll = (checkedItems, setCheckedItems, todos, setTodos) => {
+export const checkAll = (checkedItems, setCheckedItems, todos, addTodos) => {
   if (!checkedItems) {
     todos.forEach((todo) => {
       todo.active = true;
     });
     setCheckedItems(true);
-    setTodos([...todos]);
+    addTodos([...todos]);
     return;
   } else {
     todos.forEach((todo) => {
       todo.active = false;
     });
     setCheckedItems(false);
-    setTodos([...todos]);
+    addTodos([...todos]);
     return;
   }
 };
