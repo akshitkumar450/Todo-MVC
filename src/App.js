@@ -11,66 +11,21 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [checkedItems, setCheckedItems] = useState(false);
 
-  // const addTodo = (e) => {
-  //   e.preventDefault();
-  //   if (todo.trim().length === 0) return;
-  //   setTodos([
-  //     ...todos,
-  //     {
-  //       id: uuidv4(),
-  //       todo: todo.trim(),
-  //       active: false,
-  //     },
-  //   ]);
-  //   setTodo("");
-  // };
   const add = (e) => {
     addTodo(e, todo, setTodos, todos, setTodo);
   };
+
   const deleteTodos = (id) => {
     deleteTodo(id, todos, setTodos);
   };
-  // const deleteTodo = (id) => {
-  //   let temp;
-  //   temp = todos.filter((todo) => todo.id !== id);
-  //   setTodos(temp);
-  // };
 
   const setActiveTodo = (id) => {
     setActive(id, todos, setCompleted, completed, setTodos);
   };
-  // const setActive = (id) => {
-  //   let activeTodos;
-  //   activeTodos = todos.forEach((todo) => {
-  //     if (todo.id === id) {
-  //       todo.active = !todo.active;
-  //       setCompleted(!completed);
-  //     }
-  //   });
-  //   activeTodos = todos;
-  //   setTodos(activeTodos);
-  // };
 
   const checkAllTodos = () => {
     checkAll(checkedItems, setCheckedItems, todos, setTodos);
   };
-  // const checkAll = () => {
-  //   if (!checkedItems) {
-  //     todos.forEach((todo) => {
-  //       todo.active = true;
-  //     });
-  //     setCheckedItems(true);
-  //     setTodos([...todos]);
-  //     return;
-  //   } else {
-  //     todos.forEach((todo) => {
-  //       todo.active = false;
-  //     });
-  //     setCheckedItems(false);
-  //     setTodos([...todos]);
-  //     return;
-  //   }
-  // };
 
   return (
     <>

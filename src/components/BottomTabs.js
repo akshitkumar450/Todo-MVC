@@ -1,18 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import Tab from "./Tab";
 
 function BottomTabs({ todos, activeTab, setActiveTab, setTodos }) {
-  const [actives, setActives] = useState(0);
-  // console.log(todos);
   let items = 0;
   todos.forEach((todo) => todo.active === true && items++);
 
   const clear = () => {
     let clearedTodos;
     clearedTodos = todos.filter((todo) => todo.active !== true);
-    // todos.forEach((todo) => {
-    //   todo.active = false;
-    // });
     items = 0;
     setTodos([...clearedTodos]);
   };
